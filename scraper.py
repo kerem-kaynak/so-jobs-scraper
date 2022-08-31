@@ -23,12 +23,7 @@ for i in range(page_count):
     jobs_list += [jobs[i].getText().strip() for i in range(len(jobs))]
     company_list += [companies[i].getText().split('                \r\n                •\r\n                \r\n')[0].strip().replace('\n', '').replace('\r','') for i in range(len(companies))]
     url_list += [('https://stackoverflow.com' + source_urls[i]['href']) for i in range(len(source_urls))]
-    print('Cycle complete')
     time.sleep(10)
 
 df = pd.DataFrame(data = {'Company': company_list, 'Position': jobs_list, 'Sources': url_list})
 df.to_csv('final_data.csv')
-
-print(r)
-print(*url_list, sep ='\n')
-print(df)
